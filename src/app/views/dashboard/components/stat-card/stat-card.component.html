@@ -1,0 +1,23 @@
+<nb-card>
+  <nb-card-body>
+    <div class="h6 text-hint">{{ data.title }}</div>
+    <div class="h1 m-2 text-center">{{ data.value }}</div>
+    <div class="text-hint text-center mb-3">
+      <span [class]="increaseColor">
+        <nb-icon [icon]="increaseIcon"></nb-icon>{{ data.increase }} %
+      </span>
+    </div>
+    <div class="stat-chart">
+      <canvas
+        baseChart
+        height="75px"
+        [datasets]="data.graph.datasets"
+        [labels]="data.graph.labels"
+        [options]="chartSettings"
+        [chartType]="data.graph.type || 'line'"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"
+      ></canvas>
+    </div>
+  </nb-card-body>
+</nb-card>

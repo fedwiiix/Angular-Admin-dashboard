@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-3" *ngFor="let chart of statCards">
+      <app-stat-card [data]="chart"></app-stat-card>
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+      <app-chart [data]="userChartData"></app-chart>
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+      <app-chart [data]="donutChartData"></app-chart>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<nb-card>
+  <nb-card-header>{{ data.title }}</nb-card-header>
+  <nb-card-body>
+    <div>
+      <canvas
+        baseChart
+        [datasets]="data.datasets"
+        [labels]="data.labels"
+        [options]="chartSettings"
+        [chartType]="data.type || 'line'"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"
+      ></canvas>
+    </div>
+  </nb-card-body>
+</nb-card>

@@ -1,0 +1,40 @@
+<nb-layout>
+  <nb-layout-header>
+    <nb-actions>
+      <nb-action icon="menu" (click)="toggle()"></nb-action>
+    </nb-actions>
+    <div class="flex-grow-1">
+      {{ title }}
+    </div>
+
+    <nb-actions>
+      <nb-action
+        ><nb-toggle
+          [(checked)]="globalTheme"
+          (checkedChange)="toggleTheme()"
+        ></nb-toggle
+      ></nb-action>
+      <nb-action icon="bell-outline" [nbPopover]="templateRef"></nb-action>
+      <ng-template #templateRef>
+        <nb-card class="mb-0" style="max-height: 250px">
+          <nb-card-header>Notifications</nb-card-header>
+          <nb-list>
+            <nb-list-item *ngFor="let notification of notifications">
+              <nb-icon class="mr-3" [icon]="notification.icon"></nb-icon>
+              {{ notification.title }}
+            </nb-list-item>
+          </nb-list>
+        </nb-card>
+      </ng-template>
+      <nb-action icon="settings-outline" [nbContextMenu]="items"></nb-action>
+    </nb-actions>
+  </nb-layout-header>
+
+  <nb-sidebar responsive tag="dashboard">
+    <nb-menu [items]="menuLinks"></nb-menu>
+  </nb-sidebar>
+
+  <nb-layout-column>
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+</nb-layout>
